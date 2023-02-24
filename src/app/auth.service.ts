@@ -24,5 +24,33 @@ export class AuthService implements OnInit{
     console.log(data);
     return this.http.post<any>('http://localhost/snigdh_ci4/APi/loanapply',data);
   }
+  getDetails(data: number){
+    let sentId = {'Id': 42}
+    console.log(sentId);
+    return this.http.post<any>('http://localhost/snigdh_ci4/APi/getDetails',sentId);
+  }
+  session = localStorage.getItem('session') as string;
+  id = JSON.parse(this.session)?.id
+  role = JSON.parse(this.session)?.role
+  
+  checkLogin = ()=>{
+    if (this.id){
+      return true;
+    }
+    else{
+      return false;
+    }
+
+  }
+
+  getRole = ()=> {
+    if (this.role){
+      console.log(this.role)
+      return this.role;
+    }
+    else{
+      return ''
+    }
+  }
   
 }

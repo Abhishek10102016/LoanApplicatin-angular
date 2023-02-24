@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 
+
+
 export class LoginComponent implements OnInit {
   userIdObject = {userid: "", user: ""};
   submittedLoginFalse = false ;
@@ -50,21 +52,30 @@ export class LoginComponent implements OnInit {
             let session = {
               id: backData.messages.id,
               role: backData.messages.role,
+              fname:backData.messages.fname,
+              lname:backData.messages.lname,
+
             };
             localStorage.setItem('session', JSON.stringify(session));
             this.toastr.success('Logged in', 'Successfully!');
-            this.router.navigate(["/"]);
+            this.router.navigate(["/admin"]);
             // this.router.navigate(["/userDashboard"]);
           }
           if(backData.messages.success === "true" && backData.messages.role === "user"){
             let session = {
               id: backData.messages.id,
               role: backData.messages.role,
+              fname:backData.messages.fname,
+              lname:backData.messages.lname,
             };
             localStorage.setItem('session', JSON.stringify(session));
             this.toastr.success('Logged in', 'Successfully!');
-            this.router.navigate(["/userDashboard"]);
+            this.http.getDetails(42).subscribe(res=>{console.log(res)})
+
+            // this.router.navigate(["/userDashboard"]);
           }
           });
+
+       
   }
 }

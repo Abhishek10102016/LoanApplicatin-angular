@@ -17,6 +17,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { UserDashboardHeaderComponent } from './user-dashboard-header/user-dashboard-header.component';
 import { ApplyForLoanComponent } from './apply-for-loan/apply-for-loan.component';
 import { LoanApplcationStatusComponent } from './loan-applcation-status/loan-applcation-status.component';
+import { AdminHeaderComponent } from './admin-header/admin-header.component';
+import { AdminUserShowComponent } from './admin-user-show/admin-user-show.component';
+import { AdminAppShowComponent } from './admin-app-show/admin-app-show.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { LoanApplcationStatusComponent } from './loan-applcation-status/loan-app
     UserDashboardHeaderComponent,
     ApplyForLoanComponent,
     LoanApplcationStatusComponent,
+    AdminHeaderComponent,
+    AdminUserShowComponent,
+    AdminAppShowComponent
     // CommonModule
   ],
   imports: [

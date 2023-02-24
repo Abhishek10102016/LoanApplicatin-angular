@@ -7,6 +7,9 @@ import { LoanApplcationStatusComponent } from './loan-applcation-status/loan-app
 import { ApplyForLoanComponent } from './apply-for-loan/apply-for-loan.component';
 import { HeaderComponent } from './header/header.component';
 import { AuthGuard } from './services/auth.guard';
+import { AdminAppShowComponent } from './admin-app-show/admin-app-show.component';
+import { AdminHeaderComponent } from './admin-header/admin-header.component';
+import { AdminUserShowComponent } from './admin-user-show/admin-user-show.component';
 const routes: Routes = [
   {
     path: 'login', component: LoginComponent,
@@ -20,16 +23,28 @@ const routes: Routes = [
   },
   {
     path: 'userDashboard', component: UserDashboardHeaderComponent,
-    canActivate: [AuthGuard],
-    data : {role: 'user'}
+    // canActivate: [AuthGuard],
+    // data : {role: 'user'}
   },
   {
     path: 'user_loan_apply', component: ApplyForLoanComponent,
-    canActivate: [AuthGuard], data: {role: 'user'}
+    // canActivate: [AuthGuard], data: {role: 'user'}
   },  
   {
     path: 'user_loan_application_status', component: LoanApplcationStatusComponent,
-    canActivate: [AuthGuard], data: {role: 'user'}
+    // canActivate: [AuthGuard], data: {role: 'user'}
+  },
+  {
+    path: 'admin', component: AdminHeaderComponent,
+    // canActivate: [AuthGuard], data: {role: 'user'}
+  },
+  {
+    path: 'showUsers', component: AdminAppShowComponent,
+    // canActivate: [AuthGuard], data: {role: 'user'}
+  },
+  {
+    path: 'showLoanApplication', component: AdminUserShowComponent,
+    // canActivate: [AuthGuard], data: {role: 'user'}
   }
 ];
 
