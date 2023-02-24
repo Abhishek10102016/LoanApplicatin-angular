@@ -1,0 +1,304 @@
+<app-user-dashboard-header></app-user-dashboard-header>
+
+<section class="h-100 h-custom gradient-custom-2">
+    <h1 class="heading">Apply for Loan </h1>
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12">
+                <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                    <div class="card-body p-0">
+                        <form action="" onsubmit="post" [formGroup]="applyLoanForm" novalidate>
+                            <div class="row g-0">
+                                <div class="col-lg-6">
+                                    <div class="p-5">
+                                        <h3 class="fw-normal mb-5" style="color: #4835d4;">General Infomation</h3>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-4 pb-2">
+                                                <div class="form-outline">
+                                                    <label class="form-label" for="form3Examplev2">First name</label>
+                                                    <input type="text" id="firstName" name="firstName"
+                                                        class="form-control form-control-lg" formControlName="firstName"
+                                                        [ngClass]="{ 'is-invalid': submitted && applyLoanForm.controls['firstName'].errors }"
+                                                        [(ngModel)]="fname" />
+                                                    <div *ngIf="applyLoanForm.controls['firstName'].invalid && applyLoanForm.controls['firstName'].touched"
+                                                        class="text-danger">
+                                                        <div
+                                                            *ngIf="applyLoanForm.controls['firstName'].errors?.['required']">
+                                                            First Name is required.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-4 pb-2">
+                                                <div class="form-outline">
+                                                    <label class="form-label" for="form3Examplev3">Last name</label>
+                                                    <input type="text" id="lastName"
+                                                        class="form-control form-control-lg" formControlName="lastName"
+                                                        [ngClass]="{ 'is-invalid': submitted && applyLoanForm.controls['lastName'].errors }"
+                                                        [(ngModel)]="lname" />
+                                                </div>
+                                                <div *ngIf="applyLoanForm.controls['lastName'].invalid && applyLoanForm.controls['lastName'].touched"
+                                                    class="text-danger">
+                                                    <div
+                                                        *ngIf="applyLoanForm.controls['lastName'].errors?.['required']">
+                                                        Last Name is required
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h6 class="mb-2 pb-1">Gender: </h6>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                id="femaleGender" value="Female" checked [(ngModel)]="gender" />
+                                            <label class="form-check-label" for="femaleGender">Female</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                id="maleGender" value="Male" [(ngModel)]="gender" />
+                                            <label class="form-check-label" for="maleGender">Male</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                id="otherGender" value="Other" [(ngModel)]="gender" />
+                                            <label class="form-check-label" for="otherGender">Other</label>
+                                        </div>
+                                        <br>
+                                        <br>
+
+                                        <div class="row">
+                                            <div class="col-md-6 mb-4 pb-2">
+
+                                                <div class="form-outline">
+                                                    <label class="form-label" for="form3Examplev2">Email</label>
+                                                    <input type="email" id="email" formControlName="email"
+                                                        class="form-control form-control-lg"
+                                                        [ngClass]="{ 'is-invalid': submitted && applyLoanForm.controls['email'].errors }"
+                                                        [(ngModel)]="email" />
+                                                </div>
+                                                <div *ngIf="applyLoanForm.controls['email'].invalid && applyLoanForm.controls['email'].touched"
+                                                    class="text-danger">
+                                                    <div *ngIf="applyLoanForm.controls['email']">
+                                                        Enter Valid email
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-4 pb-2">
+                                                <div class="form-outline">
+                                                    <label class="form-label" for="form3Examplev3">Contact No.</label>
+                                                    <input type="text" id="form3Examplev3" formControlName="Mobile"
+                                                        maxlength="10"
+                                                        [ngClass]="{ 'is-invalid': submitted && applyLoanForm.controls['Mobile'].errors }"
+                                                        [(ngModel)]="mobile" class="form-control form-control-lg" />
+                                                </div>
+                                                <div *ngIf="applyLoanForm.controls['Mobile'].invalid && applyLoanForm.controls['Mobile'].touched"
+                                                    class="text-danger">
+                                                    <div *ngIf="applyLoanForm.controls['Mobile']">
+                                                        Enter Valid Mobile
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6 mb-4 pb-2">
+
+                                                <div class="form-outline">
+                                                    <label class="form-label" for="form3Examplev2">Aadhar</label>
+                                                    <input type="number" id="form3Examplev2"
+                                                        class="form-control form-control-lg" formControlName="aadharNo"
+                                                        [ngClass]="{ 'is-invalid': submitted && applyLoanForm.controls['aadharNo'].errors }"
+                                                        [(ngModel)]="aadhar" />
+                                                </div>
+                                                <div *ngIf="applyLoanForm.controls['aadharNo'].invalid && applyLoanForm.controls['aadharNo'].touched"
+                                                    class="text-danger">
+                                                    <div *ngIf="applyLoanForm.controls['Mobile']">
+                                                        Enter Valid Mobile
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-4 pb-2">
+                                                <div class="form-outline">
+                                                    <label class="form-label" for="form3Examplev3">PAN No.</label>
+                                                    <input type="text" id="form3Examplev3" formControlName="PanNo"
+                                                        [ngClass]="{ 'is-invalid': submitted && applyLoanForm.controls['PanNo'].errors }"
+                                                        [(ngModel)]="panNo" class="form-control form-control-lg" />
+                                                </div>
+                                                <div *ngIf="applyLoanForm.controls['PanNo'].invalid && applyLoanForm.controls['PanNo'].touched"
+                                                    class="text-danger">
+                                                    <div *ngIf="applyLoanForm.controls['PanNo']">
+                                                        Enter Valid PAN number
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h3 class="fw-normal mb-5" style="color: #4835d4;">Loan Details</h3>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-4 pb-2">
+                                                <div class="form-outline">
+                                                    <label class="form-label" for="form3Examplev2">Profession</label>
+                                                    <input type="text" id="form3Examplev2" formControlName="Profession"
+                                                        [ngClass]="{ 'is-invalid': submitted && applyLoanForm.controls['Profession'].errors }"
+                                                        [(ngModel)]="profession" class="form-control form-control-lg" />
+                                                </div>
+                                                <div *ngIf="applyLoanForm.controls['Profession'].invalid && applyLoanForm.controls['Profession'].touched"
+                                                    class="text-danger">
+                                                    <div *ngIf="applyLoanForm.controls['Profession']">
+                                                        Please Enter Profession
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-4 pb-2">
+                                                <div class="form-outline">
+                                                    <label class="form-label" for="form3Examplev3">Income</label>
+                                                    <input type="text" id="income" formControlName="Income"
+                                                        [ngClass]="{ 'is-invalid': submitted && applyLoanForm.controls['Income'].errors }"
+                                                        [(ngModel)]="income" class="form-control form-control-lg" />
+                                                </div>
+                                                <div *ngIf="applyLoanForm.controls['Income'].invalid && applyLoanForm.controls['Income'].touched"
+                                                    class="text-danger">
+                                                    <div *ngIf="applyLoanForm.controls['Income']">
+                                                        Please Enter Income
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6 mb-4 pb-2">
+
+                                                <div class="form-outline">
+                                                    <label class="form-label" for="form3Examplev2">Loan Amount</label>
+                                                    <input type="text" id="LoanAmt" formControlName="LoanAmt"
+                                                        [ngClass]="{ 'is-invalid': submitted && applyLoanForm.controls['LoanAmt'].errors }"
+                                                        [(ngModel)]="loanAmt" class="form-control form-control-lg" />
+                                                </div>
+                                                <div *ngIf="applyLoanForm.controls['LoanAmt'].invalid && applyLoanForm.controls['LoanAmt'].touched"
+                                                    class="text-danger">
+                                                    <div *ngIf="applyLoanForm.controls['LoanAmt']">
+                                                        Please Enter Loan Amount
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-4 pb-2">
+                                                <div class="form-outline">
+                                                    <label class="form-label" for="form3Examplev3">Duration (in
+                                                        months)</label>
+                                                    <input type="text" id="form3Examplev3" formControlName="Duration"
+                                                        [ngClass]="{ 'is-invalid': submitted && applyLoanForm.controls['Duration'].errors }"
+                                                        [(ngModel)]="duration" class="form-control form-control-lg" />
+                                                </div>
+                                                <div *ngIf="applyLoanForm.controls['Duration'].invalid && applyLoanForm.controls['Duration'].touched"
+                                                    class="text-danger">
+                                                    <div *ngIf="applyLoanForm.controls['Duration']">
+                                                        Please Enter Duration
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 bg-indigo text-white">
+                                    <div class="p-5">
+                                        <h3 class="fw-normal mb-5">Contact Details</h3>
+
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline form-white">
+                                                <label class="form-label" for="form3Examplea2">Flat no./House
+                                                    no.,Street</label>
+                                                <input type="text" id="form3Examplea2" formControlName="HouseNo"
+                                                    [ngClass]="{ 'is-invalid': submitted && applyLoanForm.controls['HouseNo'].errors }"
+                                                    [(ngModel)]="flatNo" class="form-control form-control-lg" />
+                                            </div>
+                                            <div *ngIf="applyLoanForm.controls['HouseNo'].invalid && applyLoanForm.controls['HouseNo'].touched"
+                                                    class="text-danger">
+                                                    <div *ngIf="applyLoanForm.controls['HouseNo']">
+                                                        Please Enter House Number
+                                                    </div>
+                                                </div>
+                                        </div>
+
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline form-white">
+                                                <label class="form-label" for="form3Examplea3">Loacality/Area</label>
+                                                <input type="text" id="form3Examplea3" formControlName="Locality"
+                                                    [ngClass]="{ 'is-invalid': submitted && applyLoanForm.controls['Locality'].errors }"
+                                                    [(ngModel)]="locality" class="form-control form-control-lg" />
+                                            </div>
+                                            <div *ngIf="applyLoanForm.controls['Locality'].invalid && applyLoanForm.controls['Locality'].touched"
+                                                    class="text-danger">
+                                                    <div *ngIf="applyLoanForm.controls['Locality']">
+                                                        Please Enter Locality
+                                                    </div>
+                                                </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-5 mb-4 pb-2">
+
+                                                <div class="form-outline form-white">
+                                                    <label class="form-label" for="form3Examplea4">Pin Code</label>
+                                                    <input type="text" id="form3Examplea4" formControlName="Pin"
+                                                        [ngClass]="{ 'is-invalid': submitted && applyLoanForm.controls['Pin'].errors }"
+                                                        [(ngModel)]="pincode" class="form-control form-control-lg" />
+                                                </div>
+                                                <div *ngIf="applyLoanForm.controls['Pin'].invalid && applyLoanForm.controls['Pin'].touched"
+                                                    class="text-danger">
+                                                    <div *ngIf="applyLoanForm.controls['Pin']">
+                                                        Please Enter valid PIN
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-7 mb-4 pb-2">
+
+                                                <div class="form-outline form-white">
+                                                    <label class="form-label" for="form3Examplea5">Place</label>
+                                                    <input type="text" id="form3Examplea5" formControlName="Place"
+                                                        [ngClass]="{ 'is-invalid': submitted && applyLoanForm.controls['Place'].errors }"
+                                                        [(ngModel)]="place" class="form-control form-control-lg" />
+                                                </div>
+                                                <div *ngIf="applyLoanForm.controls['Place'].invalid && applyLoanForm.controls['Place'].touched"
+                                                    class="text-danger">
+                                                    <div *ngIf="applyLoanForm.controls['Place']">
+                                                        Please Enter Place Name
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4 pb-2">
+                                            <div class="form-outline form-white">
+                                                <label class="form-label" for="form3Examplea6">Country</label>
+                                                <input type="text" id="form3Examplea6" formControlName="Country"
+                                                    [ngClass]="{ 'is-invalid': submitted && applyLoanForm.controls['Country'].errors }"
+                                                    [(ngModel)]="country" class="form-control form-control-lg" />
+                                            </div>
+                                            <div *ngIf="applyLoanForm.controls['Country'].invalid && applyLoanForm.controls['Country'].touched"
+                                                    class="text-danger">
+                                                    <div *ngIf="applyLoanForm.controls['Country']">
+                                                        Please Enter Country Name
+                                                    </div>
+                                                </div>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <button type="button" class="btn btn-light btn-lg"
+                                                data-mdb-ripple-color="dark" (click)="onSubmit()">Register</button>
+                                            <button style="margin: 10px;" class="btn btn-light btn-lg" type="reset"
+                                                (click)="onReset()">Reset</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
