@@ -7,8 +7,11 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./admin-header.component.css']
 })
 export class AdminHeaderComponent {
-
- constructor(private router: Router, private toastr : ToastrService){}
+  fname: string = "";
+ constructor(private router: Router, private toastr : ToastrService){
+  let session = localStorage.getItem('session') as string;
+     this.fname = JSON.parse(session).fname;
+ }
 
   logout(){
     localStorage.removeItem('session');

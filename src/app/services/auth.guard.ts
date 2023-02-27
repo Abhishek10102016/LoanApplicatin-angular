@@ -12,9 +12,9 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     let session = localStorage.getItem('session') as string;
+    console.log(route.data['role'])
     if(session){
       if(JSON.parse(session).role === route.data['role']){
-        console.log(route.data['role'])
         return true;
 
       }

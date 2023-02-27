@@ -20,6 +20,7 @@ import { LoanApplcationStatusComponent } from './loan-applcation-status/loan-app
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminUserShowComponent } from './admin-user-show/admin-user-show.component';
 import { AdminAppShowComponent } from './admin-app-show/admin-app-show.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AdminAppShowComponent } from './admin-app-show/admin-app-show.component
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    ToastrModule
+    ToastrModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

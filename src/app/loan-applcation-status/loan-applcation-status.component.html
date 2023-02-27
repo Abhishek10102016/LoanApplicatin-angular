@@ -1,2 +1,100 @@
 <app-user-dashboard-header></app-user-dashboard-header>
-<h1>loan application status</h1>
+
+<!-- Search bar is here -->
+<!-- 
+<div style="padding: 30px" class="input-group rounded">
+  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+    aria-describedby="search-addon" />
+  <button class="btn-dark">search</button>
+</div> -->
+
+<table class="table table-striped" >
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Profession</th>
+      <th>Income</th>
+      <th>Loan Amount</th>
+      <th>Duration (in months)</th>
+      <th>Status</th>
+      <th>Remark</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of res">
+      <td>{{ user.id }}</td>
+      <td>{{ user.fname }}</td>
+      <td>{{ user.lname }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.profession }}</td>
+      <td>{{ user.income }}</td>
+      <td>{{ user.loanAmt }}</td>
+      <td>{{ user.duration }}</td>
+      <td>{{ user.status }}</td>
+      <td>{{ user.remark }}</td>
+      <td><button type="button" (click)="currentDetail(user)" class="btn btn-primary" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">
+          Show Details
+        </button></td>
+
+      <!-- Button trigger modal -->
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            </div>
+            <div class="modal-body">
+              <div class="row m-1 p-1 f-18">
+                <div class="col">Id : {{currentdata.id}}</div>
+                <div class="col">Name: {{currentdata.fname+''+currentdata.lname}}</div>
+              </div>
+              <div class="row m-1 p-1 f-18">
+                <div class="col">Email: {{currentdata.email}}</div>
+                <div class="col">Mobile : {{currentdata.mobile}}</div>
+              </div>
+            <div class="row m-1 p-1 f-18">
+              <div class="col">Aadhar: {{currentdata.aadhar}}</div>
+              <div class="col">PAN : {{currentdata.pan}}</div>
+            </div>
+            <div class="row m-1 p-1 f-18">
+              <div class="col">Profession: {{currentdata.profession}}</div>
+              <div class="col">Income : {{currentdata.income}}</div>
+            </div>
+            <div class="row m-1 p-1 f-18">
+              <div class="col">Loan Amount: {{currentdata.loanAmt}}</div>
+              <div class="col">Duration : {{currentdata.duration}}</div>
+            </div>
+            <div class="row m-1 p-1 f-18">
+              <div class="col">Address 1: {{currentdata.address1}}</div>
+              <div class="col">Address2 : {{currentdata.address2}}</div>
+            </div>
+            <div class="row m-1 p-1 f-18">
+              <div class="col">Pincode: {{currentdata.pincode}}</div>
+              <div class="col">Place : {{currentdata.place}}</div>
+            </div>
+            <div class="row m-1 p-1 f-18">
+              <div class="col">Country: {{currentdata.country}}</div>
+              <!-- <div class="col">slfjsfhsofo : {{currentdata.address2}}</div> -->
+            </div>
+            <div class="row m-1 p-1 f-18">
+              <div class="col">Status: {{currentdata.status}}</div>
+              <div class="col">Remark : {{currentdata.remark}}</div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+      </div>
+    </tr>
+  </tbody>
+
+</table>

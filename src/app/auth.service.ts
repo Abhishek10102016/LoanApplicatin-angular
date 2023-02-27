@@ -25,9 +25,14 @@ export class AuthService implements OnInit{
     return this.http.post<any>('http://localhost/snigdh_ci4/APi/loanapply',data);
   }
   getDetails(data: number){
-    let sentId = {'Id': 42}
+    let sentId = {'Id': data}
     console.log(sentId);
-    return this.http.post<any>('http://localhost/snigdh_ci4/APi/getDetails',sentId);
+    return this.http.get<any>(`http://localhost/snigdh_ci4/APi/getDetails?Id=${data}`);
+  }
+  allApplicationById(data: number){
+    let sentId = {'id': 42}
+    // console.log(sentId);
+    return this.http.post<any>('http://localhost/snigdh_ci4/APi/allApplicationById',sentId);
   }
   session = localStorage.getItem('session') as string;
   id = JSON.parse(this.session)?.id

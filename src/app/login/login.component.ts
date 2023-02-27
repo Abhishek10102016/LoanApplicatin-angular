@@ -54,7 +54,6 @@ export class LoginComponent implements OnInit {
               role: backData.messages.role,
               fname:backData.messages.fname,
               lname:backData.messages.lname,
-
             };
             localStorage.setItem('session', JSON.stringify(session));
             this.toastr.success('Logged in', 'Successfully!');
@@ -70,7 +69,8 @@ export class LoginComponent implements OnInit {
             };
             localStorage.setItem('session', JSON.stringify(session));
             this.toastr.success('Logged in', 'Successfully!');
-            this.http.getDetails(42).subscribe(res=>{console.log(res)})
+            this.router.navigate(["/userDashboard"]);
+            this.http.getDetails(session.id).subscribe(res=>{console.log(res)})
 
             // this.router.navigate(["/userDashboard"]);
           }

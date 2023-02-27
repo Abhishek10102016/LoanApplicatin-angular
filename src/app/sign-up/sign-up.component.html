@@ -19,14 +19,14 @@
                       <input type="text" id="firstName" name="firstName" class="form-control" placeholder="John"
                         formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && requiredForm.controls['firstName'].errors }"
                         [(ngModel)]="fname"/>
+                        <div *ngIf="requiredForm.controls['firstName'].invalid && requiredForm.controls['firstName'].touched"
+                        class="text-danger">
+                        <div *ngIf="requiredForm.controls['firstName'].errors?.['required']">
+                          First Name is required.
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div *ngIf="requiredForm.controls['firstName'].invalid && requiredForm.controls['firstName'].touched"
-                  class="text-danger">
-                  <div *ngIf="requiredForm.controls['firstName'].errors?.['required']">
-                    First Name is required.
-                  </div>
-                </div>
                   <!-- Last Name  -->
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
@@ -35,12 +35,12 @@
                       <input type="text" id="lastName" class="form-control" placeholder="Alias"
                         formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && requiredForm.controls['lastName'].errors }"
                         [(ngModel)]="lname" />
-                    </div>
-                  </div>
-                  <div *ngIf="requiredForm.controls['lastName'].invalid && requiredForm.controls['lastName'].touched"
-                    class="text-danger">
-                    <div *ngIf="requiredForm.controls['lastName'].errors?.['required']">
-                      Last Name is required
+                        <div *ngIf="requiredForm.controls['lastName'].invalid && requiredForm.controls['lastName'].touched"
+                          class="text-danger">
+                          <div *ngIf="requiredForm.controls['lastName'].errors?.['required']">
+                            Last Name is required
+                          </div>
+                        </div>
                     </div>
                   </div>
                   <!-- email  -->
@@ -51,12 +51,12 @@
                       <input type="email" id="email" class="form-control" placeholder="abc@xyz.com"
                         formControlName="email" [ngClass]="{ 'is-invalid': submitted && requiredForm.controls['email'].errors }"
                         [(ngModel)]="email"/>
-                    </div>
-                  </div>
-                  <div *ngIf="requiredForm.controls['email'].invalid && requiredForm.controls['email'].touched"
-                    class="text-danger">
-                    <div *ngIf="requiredForm.controls['email']">
-                      Enter Valid email
+                        <div *ngIf="requiredForm.controls['email'].invalid && requiredForm.controls['email'].touched"
+                          class="text-danger">
+                          <div *ngIf="requiredForm.controls['email']">
+                            Enter Valid email
+                          </div>
+                        </div>
                     </div>
                   </div>
                   <!-- Mobile -->
@@ -66,12 +66,12 @@
                       <label class="form-label" for="form3Example3c">Mobile</label>
                       <input type="text" id="form3Example3c" class="form-control" maxlength="10" placeholder="Mobile" formControlName="Mobile" 
                       [ngClass]="{ 'is-invalid': submitted && requiredForm.controls['Mobile'].errors }" [(ngModel)]="mobile"/>
-                    </div>
-                  </div>
-                  <div *ngIf="requiredForm.controls['Mobile'].invalid && requiredForm.controls['Mobile'].touched"
-                    class="text-danger">
-                    <div *ngIf="requiredForm.controls['Mobile']">
-                      Enter Valid Mobile
+                      <div *ngIf="requiredForm.controls['Mobile'].invalid && requiredForm.controls['Mobile'].touched"
+                        class="text-danger">
+                        <div *ngIf="requiredForm.controls['Mobile']">
+                          Enter Valid Mobile
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <!-- password -->
@@ -81,14 +81,14 @@
                       <label class="form-label" for="form3Example4c">Password</label>
                       <input type="password" id="form3Example4c" class="form-control" formControlName="password" 
                       [ngClass]="{ 'is-invalid': submitted && requiredForm.controls['password'].errors }" [(ngModel)]="password"/>
+                      <div *ngIf="requiredForm.controls['password'].invalid && requiredForm.controls['password'].touched"
+                      class="text-danger">
+                      <div *ngIf="requiredForm.controls['password']">
+                        Enter Valid password
+                      </div>
+                    </div>
                     </div>
                   </div>
-                  <div *ngIf="requiredForm.controls['password'].invalid && requiredForm.controls['password'].touched"
-                  class="text-danger">
-                  <div *ngIf="requiredForm.controls['password']">
-                    Enter Valid password
-                  </div>
-                </div>
 
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-key fa-lg me-3 fa-fw"></i>
@@ -96,6 +96,7 @@
                       <label class="form-label" for="form3Example4cd">Repeat your password</label>
                       <input type="password" id="form3Example4cd" class="form-control"  formControlName="confirmPassword" 
                       [ngClass]="{ 'is-invalid': submitted && requiredForm.controls['confirmPassword'].errors }" [(ngModel)]="confirmPassword"/>
+                      <div *ngIf="password !== confirmPassword && requiredForm.controls['confirmPassword'].touched" class="alert alert-danger">Password must be same</div>
                     </div>
                   </div>
                   <!-- <div *ngIf="requiredForm.controls['confirmPassword'].invalid && requiredForm.controls['confirmPassword'].touched"
@@ -104,7 +105,6 @@
                     Enter Valid password
                   </div>
                 </div> -->
-                <div *ngIf="password !== confirmPassword && requiredForm.controls['confirmPassword'].touched" class="alert alert-danger">Password must be same</div>
 
                 <div class="text-center">
                   <button class="btn btn-primary mr-1" (click)="onSubmit()" >Register</button>
