@@ -1,2 +1,235 @@
 <app-admin-header></app-admin-header>
+<form class="form-inline me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search boldText" #formData="ngForm"
+    (ngSubmit)="onSearchApplication(formData.value)">
+    <div class="input-group search-group">
+        <div class="search-icon">
+            <i class="bx bx-search"></i>
+        </div>
+        <input type="text" name="keyWord" class="form-control border-0 small" placeholder="Search Here" ngModel />
+        <button class="btn search-btn">Search</button>
+    </div>
+</form>
 
+<body id="body">
+    <!-- Page Wrapper -->
+
+    <div id="wrapper">
+        <!--Main Navigation-->
+        
+
+        <div id="content-wrapper" class="d-flex flex-column justify-content-center">
+            <!--table-sec-->
+            <div class="row">
+                <div class="col-xs-12">
+                    <!--pagination-->
+                    <div class="mb-3 table-custom">
+                        <!--close-pagination-->
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th class="boldText" scope="col">S.No</th>
+                                        <th class="boldText" scope="col">ID</th>
+                                        <th class="boldText" scope="col">User Id</th>
+                                        <th class="boldText" scope="col">Name</th>
+                                        <th class="boldText" scope="col">Email</th>
+                                        <th class="boldText" scope="col">Amount</th>
+                                        <th class="boldText" scope="col">Duration</th>
+                                        <th class="boldText" scope="col">Salary</th>
+                                        <th class="boldText" scope="col">Status</th>
+                                        <th class="boldText" scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let user of data; let i = index">
+                                        <th class="boldText" scope="row">
+                                            {{ (page - 1) * recordLimit + i + 1 }}
+                                        </th>
+                                        <th class="boldText" scope="row">{{ user.id }}</th>
+                                        <th class="boldText" scope="row">{{ user.userid }}</th>
+                                        <td class="boldText" scope="row">
+                                            {{ user.fname + " " + user.lname }}
+                                        </td>
+                                        <td class="boldText" scope="row">{{ user.email }}</td>
+                                        <td class="boldText" scope="row">{{ user.loanAmt }}</td>
+                                        <td class="boldText" scope="row">{{ user.duration }}</td>
+                                        <td class="boldText" scope="row">{{ user.income }}</td>
+                                        <td class="boldText" scope="row">{{ user.status }}</td>
+                                        <td class="boldText" scope="row">
+                                            <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle"
+                                                role="button" style="color: black"
+                                                (click)="currentDetail(user)">Details</a>
+                                        </td>
+
+                                        <div class="modal fade" id="exampleModalToggle"
+                                            aria-labelledby="exampleModalToggleLabel" tabindex="-1"
+                                            style="display: none" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <form #userdata="ngForm" (ngSubmit)="UpdateStatus(userdata.value)">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5 boldText"
+                                                                id="exampleModalToggleLabel">
+                                                                User Details
+                                                            </h1>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="container text text-capitalize">
+                                                                <div class="row m-1 p-1 f-18 boldTextSm">
+                                                                    <div class="col modalInput">
+                                                                        Application Id : {{ currentdata.id }}
+                                                                        <input type="hidden" name="id"
+                                                                            ngModel="{{ currentdata.id }}" />
+                                                                    </div>
+                                                                    <div class="col boldTextSm">
+                                                                        User Id : {{ currentdata.userid }}
+                                                                        <input type="hidden" name="userid"
+                                                                            ngModel="{{ currentdata.userid }}" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row m-1 p-1 f-18 boldTextSm">
+                                                                    <div class="col">
+                                                                        Name :
+                                                                        {{
+                                                                        currentdata.fname +
+                                                                        "
+                                                                        " +
+                                                                        currentdata.lname
+                                                                        }}
+                                                                    </div>
+                                                                    <div class="col boldTextSm">
+                                                                        Gender : {{ currentdata.gender }}
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row m-1 p-1 f-18 boldTextSm">
+                                                                    <div class="col">
+                                                                        Email : {{ currentdata.email }}
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        Mobile No. : {{ currentdata.mobile }}
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row m-1 p-1 f-18 boldTextSm">
+                                                                    <div class="col">
+                                                                        Aadhar Number : {{ currentdata.aadhar }}
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        Pan Number : {{ currentdata.pan }}
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row m-1 p-1 f-18 boldTextSm">
+                                                                    <div class="col">
+                                                                        Loan Amount : {{ currentdata.loanAmt }}
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        Duration :
+                                                                        {{ currentdata.duration + " Months" }}
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row m-1 p-1 f-18 boldTextSm">
+                                                                    <div class="col">
+                                                                        Income : {{ currentdata.income }}
+                                                                    </div>
+                                                                    <div class="col"></div>
+                                                                </div>
+                                                                <div class="row m-1 p-1 f-18 boldTextSm">
+                                                                    <div class="col">
+                                                                        Address :
+                                                                        {{
+                                                                        currentdata.address1 +
+                                                                        "," +
+                                                                        currentdata.address2
+                                                                        }}
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        Place : {{ currentdata.place }}
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row m-1 p-1 f-18 boldTextSm">
+                                                                    <div class="col">
+                                                                        Pincode : {{ currentdata.pincode }}
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row m-1 p-1 f-18 boldTextSm">
+                                                                    <div class="col">
+                                                                        Country : {{ currentdata.country }}
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        Status:{{ currentdata.status }}
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col">
+                                                                        <div class="m-2 p-2 f-18 boldTextSm">
+                                                                            Status :
+                                                                        </div>
+                                                                        <select name="status"
+                                                                            class="select form-control m-2 p-2"
+                                                                            ngModel="{{ currentdata.status }}"
+                                                                            id="status">
+                                                                            <option value="pending">Pending</option>
+                                                                            <option value="approved">Approved</option>
+                                                                            <option value="rejected">Rejected</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="m-2 p-2 f-18 boldTextSm">
+                                                                            Review :
+                                                                        </div>
+                                                                        <textarea name="remark" id="remark" cols="{50}"
+                                                                            rows="{50}" style="
+                                          width: 90%;
+                                          border-radius: 10px;
+                                          padding: 2%;
+                                        " ngModel="{{ currentdata.remark }}">
+                                      </textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="modal-footer">
+                                                            <button type="submit" data-bs-target="#exampleModalToggle"
+                                                                data-bs-toggle="modal" class="btn btn-warn-custom">
+                                                                Update
+                                                            </button>
+                                                            <button type="button" class="btn btn-custom"
+                                                                data-bs-target="#exampleModalToggle"
+                                                                data-bs-toggle="modal">
+                                                                Cancel
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!--pagination-->
+                        <div class="d-flex align-items-center justify-content-end">
+                            <select style="width: auto" class="form-select me-2 page-count"
+                                (change)="setRecordLimit($event)">
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <!-- <option value="20">20</option> -->
+                            </select>
+
+                            <li class="pagination mb-0" *ngFor="let i of pageArr">
+                                <a class="page-link rounded-3 me-3" (click)="setPageNo(i)">{{
+                                    i
+                                    }}</a>
+                            </li>
+                        </div>
+                        <!--close-pagination-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

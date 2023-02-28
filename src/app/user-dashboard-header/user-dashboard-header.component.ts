@@ -9,7 +9,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./user-dashboard-header.component.css']
 })
 export class UserDashboardHeaderComponent {
-fname: string = "";
+  fname: string = "";
    
   constructor(private router: Router, private toastr: ToastrService, private service: AuthService){
     let session = localStorage.getItem('session') as string;

@@ -1,8 +1,182 @@
 <app-admin-header></app-admin-header>
 
-<div style="padding: 30px" class="input-group rounded">
-  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-    aria-describedby="search-addon" />
-  <button class="btn-dark">search</button>
-</div>
-
+<body id="body">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <!--Main Navigation-->
+      
+            <!-- Topbar Search -->
+            <form
+              class="form-inline me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search"
+              #formData="ngForm"
+              (ngSubmit)="onSearch(formData.value)"
+            >
+              <div class="input-group search-group">
+                <div class="search-icon">
+                  <i class="bx bx-search"></i>
+                </div>
+                <input
+                  type="text"
+                  name="keyWord"
+                  class="form-control border-0 small"
+                  placeholder="Search Here"
+                  ngModel
+                />
+                <button class="btn search-btn">Search</button>
+              </div>
+            </form>
+  
+           
+        <!-- Navbar -->
+      
+  
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column justify-content-center">
+       
+  
+        <!-- home-Page-Content -->
+  
+        <!--Close-filter-sec -->
+  
+        <!--table-sec-->
+        <div class="row">
+          <div class="col-xs-12">
+            <!--pagination-->
+            <div class="mb-3" style="margin-top: 5rem; margin-left: 2rem">
+              <!--close-pagination-->
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class="table-dark">
+                    <tr>
+                      <th class="boldText" scope="col">S.No</th>
+                      <th class="boldText" scope="col">ID</th>
+                      <th class="boldText" scope="col">Name</th>
+                      <th class="boldText" scope="col">Email</th>
+                      <th class="boldText" scope="col">Mobile No.</th>
+                      <th class="boldText" scope="col">Role</th>
+                      <th class="boldText" scope="col">Action</th>
+                    </tr>
+                  </thead>
+  
+                  <tbody>
+                    <tr *ngFor="let user of data; let i = index">
+                      <th class="boldText" scope="row">
+                        {{ (pageNo - 1) * recordLimit + i + 1 }}
+                      </th>
+                      <th class="boldText" scope="row">{{ user.id }}</th>
+                      <td class="boldText" scope="row">
+                        {{ user.fname + " " + user.lname }}
+                      </td>
+                      <td class="boldText" scope="row">{{ user.email }}</td>
+                      <td class="boldText" scope="row">{{ user.mobile }}</td>
+                      <td class="boldText" scope="row">{{ user.role }}</td>
+                      <td class="boldText" scope="row">
+                        <a
+                          *ngIf="user.role === 'user'"
+                          class="btn btn-danger"
+                          data-bs-toggle="modal"
+                          href="#exampleModalToggle"
+                          role="button"
+                          style="color: rgb(255, 255, 255)"
+                          (click)="currentUserId = user.id"
+                          >Delete</a
+                        >
+  
+                        <button
+                          *ngIf="user.role === 'admin'"
+                          class="btn btn-secondary"
+                          disabled="disabled"
+                        >
+                          Disabled
+                        </button>
+                        <div
+                          class="modal fade"
+                          id="exampleModalToggle"
+                          aria-labelledby="exampleModalToggleLabel"
+                          tabindex="-1"
+                          style="display: none"
+                          aria-hidden="true"
+                        >
+                          <div class="modal-dialog modal-md">
+                            <form #userdata="" (ngSubmit)="deleteUser()">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h1
+                                    class="btn btn-danger"
+                                    id="exampleModalToggleLabel"
+                                  >
+                                    Delete
+                                  </h1>
+                                  <button
+                                    type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                  ></button>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="container text text-capitalize">
+                                    <div class="row m-1 p-1 f-18">
+                                      <div class="col">
+                                        Are You Sure Want to Delete ?
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+  
+                                <div class="modal-footer">
+                                  <button
+                                    type="submit"
+                                    data-bs-target="#exampleModalToggle"
+                                    data-bs-toggle="modal"
+                                    class="btn btn-danger"
+                                  >
+                                    Delete
+                                  </button>
+                                  <button
+                                    type="button"
+                                    class="btn btn-custom"
+                                    data-bs-target="#exampleModalToggle"
+                                    data-bs-toggle="modal"
+                                  >
+                                    Cancel
+                                  </button>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--pagination-->
+              <div class="d-flex align-items-center justify-content-end">
+                <select
+                  style="width: auto"
+                  class="form-select me-2 page-count"
+                  (change)="setRecordLimit($event)"
+                >
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="50">50</option>
+                  <!-- <option value="20">20</option> -->
+                </select>
+  
+                <li class="pagination mb-0" *ngFor="let i of pageArr">
+                  <a class="page-link rounded-3 me-3" (click)="setPageNo(i)">{{
+                    i
+                  }}</a>
+                </li>
+              </div>
+              <!--close-pagination-->
+            </div>
+          </div>
+          <!--close-table-sec-->
+        </div>
+        <!--Close-home-Page-Content -->
+      </div>
+    </div>
+  </body>
+  

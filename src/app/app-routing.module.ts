@@ -39,11 +39,11 @@ const routes: Routes = [
     // canActivate: [AuthGuard], data: {role: 'user'}
   },
   {
-    path: 'showUsers', component: AdminAppShowComponent,
+    path: 'showUsers', component: AdminUserShowComponent,
     // canActivate: [AuthGuard], data: {role: 'user'}
   },
   {
-    path: 'showLoanApplication', component: AdminUserShowComponent,
+    path: 'showLoanApplication', component:  AdminAppShowComponent,
     // canActivate: [AuthGuard], data: {role: 'user'}
   }
 ];
