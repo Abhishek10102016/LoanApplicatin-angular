@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { allLonaResponse, userApi } from '../interfaces';
-import {allUserRes} from "../interfaces";
+import { allLonaResponse, userLoanApi } from '../interfaces';
+import {} from "../interfaces";
+
 @Component({
   selector: 'app-admin-app-show',
   templateUrl: './admin-app-show.component.html',
@@ -12,20 +13,23 @@ import {allUserRes} from "../interfaces";
 export class AdminAppShowComponent {
      constructor(private service: AuthService){
     }
-      ngOnInit(): void {
-        this.service.onChangeData.subscribe((el:typeof allLonaResponse[])=>{
-          this.data = el;
-        })
-        this.service.getFirstData();
-      }
+    ngOnInit(): void {
+      this.service
+        .searchApplication(this.page, this.recordLimit, this.key)
+        .subscribe((res) => {
+          (this.data = res),
+            (this.totalpages = res.totalpages),
+            this.updatePages();
+        });
+    }
      
-    //  data: userApi = {
-    //   status: 0,
-    //   error: '', //create interface
-    //   data: [],
-    //   totalpages: 1,
-    //  };
-    data:typeof allLonaResponse[]=[];
+     data: userLoanApi = {
+      status: 0,
+      error: '', //create interface
+      data: [],
+      totalpages: 1,
+     };
+    // data:typeof allLonaResponse[]=[];
      
 
      currentUserId = '';
@@ -36,10 +40,10 @@ export class AdminAppShowComponent {
      key = '';
      currentdata: any = {};
 
-     active = false;
-     isActive(){
-      this.active = !this.active;
-     }
+    //  active = false;
+    //  isActive(){
+    //   this.active = !this.active;
+    //  }
 
      updatePages(){
       this.pageArr = [];
@@ -48,9 +52,12 @@ export class AdminAppShowComponent {
       }
      }
 
-     searchApplication(key = this.key, page = this.page, recordlimit = this.recordLimit) {}
+     //searchApplication(key = this.key, page = this.page, recordlimit = this.recordLimit) {}
      toggle() {
-
+      var element = document.getElementById('accordionSidebar');
+      var body = document.getElementById('body');
+      element?.classList.toggle('toggled');
+      body?.classList.toggle('sidebar-toggled');
      }
    
      setRecordLimit(event: Event) {

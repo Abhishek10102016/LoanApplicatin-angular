@@ -16,7 +16,6 @@
     <div id="wrapper">
         <!--Main Navigation-->
         
-
         <div id="content-wrapper" class="d-flex flex-column justify-content-center">
             <!--table-sec-->
             <div class="row">
@@ -33,6 +32,7 @@
                                         <th class="boldText" scope="col">User Id</th>
                                         <th class="boldText" scope="col">Name</th>
                                         <th class="boldText" scope="col">Email</th>
+                                        <th class="boldText" scope="col">Profession</th>
                                         <th class="boldText" scope="col">Amount</th>
                                         <th class="boldText" scope="col">Duration</th>
                                         <th class="boldText" scope="col">Salary</th>
@@ -41,7 +41,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let user of data; let i = index">
+                                    <tr *ngFor="let user of data.data; let i = index">
                                         <th class="boldText" scope="row">
                                             {{ (page - 1) * recordLimit + i + 1 }}
                                         </th>
@@ -51,13 +51,14 @@
                                             {{ user.fname + " " + user.lname }}
                                         </td>
                                         <td class="boldText" scope="row">{{ user.email }}</td>
+                                        <td class="boldText" scope="row">{{ user.profession }}</td>
                                         <td class="boldText" scope="row">{{ user.loanAmt }}</td>
                                         <td class="boldText" scope="row">{{ user.duration }}</td>
                                         <td class="boldText" scope="row">{{ user.income }}</td>
                                         <td class="boldText" scope="row">{{ user.status }}</td>
                                         <td class="boldText" scope="row">
-                                            <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle"
-                                                role="button" style="color: black"
+                                            <a class="btn btn-info" data-bs-toggle="modal" href="#exampleModalToggle"
+                                                role="button" style="color: rgb(255, 255, 255);"
                                                 (click)="currentDetail(user)">Details</a>
                                         </td>
 

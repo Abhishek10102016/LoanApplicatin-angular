@@ -35,3 +35,9 @@ export const allLonaResponse = {
     data: typeof allUserRes[];
     totalpages: number;
   }
+  export interface userLoanApi {
+    status: number;
+    error: string;
+    data: typeof allLonaResponse[];
+    totalpages: number;
+  }

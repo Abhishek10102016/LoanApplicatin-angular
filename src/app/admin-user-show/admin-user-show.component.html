@@ -1,30 +1,35 @@
+<header class="header">
 <app-admin-header></app-admin-header>
+<h3 style="font-family:Arial, Helvetica, sans-serif; font-weight: bold; margin: 20px 1; color: #0796ce;">Show Users</h3>
+<!--Main Navigation-->
+
+      <!-- Topbar Search -->
+      <form style="margin: auto; border-block-end: 2px;"
+        class="form-inline me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search"
+        #formData="ngForm"
+        (ngSubmit)="onSearch(formData.value)"
+      >
+        <div class="input-group search-group">
+          <div class="search-icon">
+            <i class="bx bx-search"></i>
+          </div>
+          <input
+            type="text"
+            name="keyWord"
+            class="form-control border-0 small"
+            placeholder="Search Here"
+            ngModel
+          />
+          <button class="btn search-btn">Search</button>
+        </div>
+      </form>
+</header>
 
 <body id="body">
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-      <!--Main Navigation-->
-      
-            <!-- Topbar Search -->
-            <form
-              class="form-inline me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search"
-              #formData="ngForm"
-              (ngSubmit)="onSearch(formData.value)"
-            >
-              <div class="input-group search-group">
-                <div class="search-icon">
-                  <i class="bx bx-search"></i>
-                </div>
-                <input
-                  type="text"
-                  name="keyWord"
-                  class="form-control border-0 small"
-                  placeholder="Search Here"
-                  ngModel
-                />
-                <button class="btn search-btn">Search</button>
-              </div>
-            </form>
+  <!-- Page Wrapper -->
+
+
+  <div id="wrapper">
   
            
         <!-- Navbar -->

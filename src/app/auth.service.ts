@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { userApi } from './interfaces';
+import { userApi, userLoanApi } from './interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,7 @@ export class AuthService implements OnInit{
   private data :any[]=[];
   apiUrl = 'http://localhost/snigdh_ci4/api';
   onChangeData = new EventEmitter<userApi[]>();
+  onChangeDataLoan = new EventEmitter<userLoanApi[]>();
   constructor(private http: HttpClient) { }
   ngOnInit(): void {
 
@@ -47,7 +48,7 @@ export class AuthService implements OnInit{
     // console.log(sentId);
     return this.http.post<any>('http://localhost/snigdh_ci4/APi/allApplicationById',sentId);
   }
-  updateStatus(data: {}){
+  updateStatus(data: {}){  //*important to notice here data first
     // let sentId = {'id': 42}
     // console.log(sentId);
     return this.http.post<any>('http://localhost/snigdh_ci4/APi/updateuser',data);
@@ -63,7 +64,6 @@ export class AuthService implements OnInit{
     let a = this.http.get<any>(
       this.apiUrl + `/searchApplication?page=${page}&recordlimit=${record}&keyWord=${key}`
     );
-
     return a;
   }
   deleteUser(id: string = '') {
